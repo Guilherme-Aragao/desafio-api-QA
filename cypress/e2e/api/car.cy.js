@@ -14,7 +14,7 @@ describe('Testes de Carrinhos - Serverest API', () => {
         })
     })
 
-    it('Deve criar carrinho com sucesso', () => {
+    it('Should create cart successfully', () => {
         obterToken().then((token) => {
 
             // 1️⃣ Cria produto válido
@@ -23,9 +23,9 @@ describe('Testes de Carrinhos - Serverest API', () => {
                 url: '/produtos',
                 headers: { Authorization: token },
                 body: {
-                    nome: `ProdutoCarrinho_${Date.now()}`,
+                    nome: `CarProduct_${Date.now()}`,
                     preco: 120,
-                    descricao: 'Produto para carrinho',
+                    descricao: 'Cart product',
                     quantidade: 5
                 }
             }).then((prodResponse) => {
@@ -53,7 +53,7 @@ describe('Testes de Carrinhos - Serverest API', () => {
         })
     })
 
-    it('Deve falhar ao criar carrinho com produto inexistente', () => {
+    it('Should fail when creating a cart with a nonexistent product', () => {
         obterToken().then((token) => {
             cy.request({
                 method: 'POST',

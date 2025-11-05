@@ -3,7 +3,7 @@ import 'cypress-plugin-api'
 
 describe('Testes de Usuários - Serverest API', () => {
 
-    it('Deve criar usuário com sucesso', () => {
+    it('Should successfully create user', () => {
         const email = `usuario_${Date.now()}@teste.com`
         cy.request({
             method: 'POST',
@@ -20,7 +20,7 @@ describe('Testes de Usuários - Serverest API', () => {
         })
     })
 
-    it('Deve falhar ao criar usuário com e-mail duplicado', () => {
+    it('Should fail when creating a user with a duplicate email', () => {
         cy.request({
             method: 'POST',
             url: '/usuarios',

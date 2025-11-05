@@ -3,7 +3,7 @@ import 'cypress-plugin-api'
 
 describe('Testes de Login - Serverest API', () => {
 
-    it('Deve realizar login com sucesso', () => {
+    it('Should log in successfully', () => {
         cy.request({
             method: 'POST',
             url: '/login',
@@ -18,14 +18,14 @@ describe('Testes de Login - Serverest API', () => {
         })
     })
 
-    it('Deve falhar ao tentar login com senha incorreta', () => {
+    it('Should fail when attempting to log in with an incorrect password', () => {
         cy.request({
             method: 'POST',
             url: '/login',
             failOnStatusCode: false,
             body: {
                 email: 'fulano@qa.com',
-                password: 'senhaerrada'
+                password: 'falsepassword'
             }
         }).then((response) => {
             expect(response.status).to.eq(401)

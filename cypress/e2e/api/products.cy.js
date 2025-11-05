@@ -4,16 +4,16 @@ import { obterToken } from '../../support/apiHelper'
 
 describe('Testes de Produtos - Serverest API', () => {
 
-    it('Deve criar produto com sucesso (autenticado)', () => {
+    it('Should create product successfully (authenticated)', () => {
         obterToken().then((token) => {
             cy.request({
                 method: 'POST',
                 url: '/produtos',
                 headers: { Authorization: token },
                 body: {
-                    nome: `Produto ${Date.now()}`,
+                    nome: `Product ${Date.now()}`,
                     preco: 150,
-                    descricao: 'Produto teste automatizado',
+                    descricao: 'Automated test product',
                     quantidade: 10
                 }
             }).then((response) => {
@@ -23,15 +23,15 @@ describe('Testes de Produtos - Serverest API', () => {
         })
     })
 
-    it('Deve impedir criação de produto sem autenticação', () => {
+    it('Should prevent product creation without authentication', () => {
         cy.request({
             method: 'POST',
             url: '/produtos',
             failOnStatusCode: false,
             body: {
-                nome: 'Produto sem token',
+                nome: 'Product without token',
                 preco: 100,
-                descricao: 'Teste sem autenticação',
+                descricao: 'Test without authentication',
                 quantidade: 10
             }
         }).then((response) => {
